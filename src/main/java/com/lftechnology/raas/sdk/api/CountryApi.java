@@ -3,7 +3,7 @@ package com.lftechnology.raas.sdk.api;
 import com.lftechnology.raas.sdk.dto.Country;
 import com.lftechnology.raas.sdk.exception.ApiException;
 import com.lftechnology.raas.sdk.pojo.ListResponse;
-import com.lftechnology.raas.sdk.restrofit.CountryApiService;
+import com.lftechnology.raas.sdk.service.CountryApiService;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
