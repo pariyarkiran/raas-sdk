@@ -23,8 +23,9 @@ public class RequestApi {
     private String baseUrl;
     private Headers headers;
 
-    public RequestApi(){
-        this.baseUrl = "https://qa.raas.lftechnology.com/v1/";
+    public RequestApi(Map<String,String> headerMap){
+        this.baseUrl = this.baseUrl = "https://qa.raas.lftechnology.com/v1/";
+        this.headers = ApiUtil.buildHeader(headerMap);
     }
 
     public RequestApi(String baseUrl,Map<String,String> headerMap){
