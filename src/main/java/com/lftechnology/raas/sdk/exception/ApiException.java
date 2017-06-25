@@ -5,7 +5,7 @@ package com.lftechnology.raas.sdk.exception;
  */
 public class ApiException extends RuntimeException {
     public ApiException() {
-        super("Exception while call RAAS API.");
+        super("Something went wrong");
     }
 
     public ApiException(String message) {

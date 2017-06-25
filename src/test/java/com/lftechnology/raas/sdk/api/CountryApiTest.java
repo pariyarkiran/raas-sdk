@@ -3,16 +3,15 @@ package com.lftechnology.raas.sdk.api;
 import com.lftechnology.raas.sdk.constants.CommonConstant;
 import com.lftechnology.raas.sdk.dto.Country;
 import com.lftechnology.raas.sdk.exception.ApiException;
+import com.lftechnology.raas.sdk.pojo.ListResponse;
 import com.lftechnology.raas.sdk.util.ApiUtil;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +24,6 @@ public class CountryApiTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @Ignore
     @Test
     public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
         //Given
@@ -54,7 +52,7 @@ public class CountryApiTest {
         CountryApi countryApi = new CountryApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
         //When
-        List<Country> countries = countryApi.list();
+        ListResponse<Country> countries = countryApi.list();
 
         //Then
         Assert.assertNotNull(countries);

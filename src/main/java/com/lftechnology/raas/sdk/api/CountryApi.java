@@ -9,7 +9,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,21 +26,33 @@ public class CountryApi {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         CountryApiService service = retrofit.create(CountryApiService.class);
         Call<Country> call = service.get(id);
-        Response<Country> response = call.execute();
-        if(!response.isSuccessful()){
-            throw new ApiException(response.errorBody().string());
-        }
-        return response.body();
+        return executeApiCall(call);
     }
 
-    public List<Country> list() throws IOException {
+    public ListResponse<Country> list() throws IOException {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         CountryApiService service = retrofit.create(CountryApiService.class);
         Call<ListResponse<Country>> call = service.list();
-        Response<ListResponse<Country>> response = call.execute();
-        if(!response.isSuccessful()){
-            throw new ApiException(response.errorBody().string());
+        try {
+            Response<ListResponse<Country>> response = call.execute();
+            if (!response.isSuccessful()) {
+                throw new ApiException(response.errorBody().string());
+            }
+            return response.body();
+        } catch (IOException e) {
+            throw new ApiException();
         }
-        return response.body().getResults();
+    }
+
+    private Country executeApiCall(Call<Country> call) {
+        try {
+            Response<Country> response = call.execute();
+            if (!response.isSuccessful()) {
+                throw new ApiException(response.errorBody().string());
+            }
+            return response.body();
+        } catch (IOException e) {
+            throw new ApiException();
+        }
     }
 }

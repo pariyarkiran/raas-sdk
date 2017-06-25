@@ -1,40 +1,41 @@
 package com.lftechnology.raas.sdk.api;
 
-import com.lftechnology.raas.sdk.dto.Bank;
+import com.lftechnology.raas.sdk.dto.Sender;
 import com.lftechnology.raas.sdk.exception.ApiException;
 import com.lftechnology.raas.sdk.pojo.ListResponse;
-import com.lftechnology.raas.sdk.service.BankApiService;
+import com.lftechnology.raas.sdk.service.SenderApiService;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author Kiran Pariyar <kiranpariyar@lftechnology.com>
  */
-public class BankApi {
+public class SenderApi {
 
     private RequestApi requestApi;
 
-    public BankApi(String baseUrl, Map<String, String> headerMap) {
+    public SenderApi(String baseUrl, Map<String, String> headerMap) {
         this.requestApi = new RequestApi(baseUrl, headerMap);
     }
 
-    public Bank getById(String id) {
+    public Sender getById(UUID id) {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
-        BankApiService service = retrofit.create(BankApiService.class);
-        Call<Bank> call = service.get(id);
+        SenderApiService service = retrofit.create(SenderApiService.class);
+        Call<Sender> call = service.get(id);
         return executeApiCall(call);
     }
 
-    public ListResponse<Bank> list() {
+    public ListResponse<Sender> list() {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
-        BankApiService service = retrofit.create(BankApiService.class);
-        Call<ListResponse<Bank>> call = service.list();
+        SenderApiService service = retrofit.create(SenderApiService.class);
+        Call<ListResponse<Sender>> call = service.list();
         try {
-            Response<ListResponse<Bank>> response = call.execute();
+            Response<ListResponse<Sender>> response = call.execute();
             if (!response.isSuccessful()) {
                 throw new ApiException(response.errorBody().string());
             }
@@ -44,9 +45,16 @@ public class BankApi {
         }
     }
 
-    private Bank executeApiCall(Call<Bank> call) {
+    public Sender create(Sender sender) {
+        Retrofit retrofit = this.requestApi.getRetrofitObject();
+        SenderApiService service = retrofit.create(SenderApiService.class);
+        Call<Sender> call = service.create(sender);
+        return executeApiCall(call);
+    }
+
+    private Sender executeApiCall(Call<Sender> call) {
         try {
-            Response<Bank> response = call.execute();
+            Response<Sender> response = call.execute();
             if (!response.isSuccessful()) {
                 throw new ApiException(response.errorBody().string());
             }
@@ -55,5 +63,4 @@ public class BankApi {
             throw new ApiException();
         }
     }
-
 }
