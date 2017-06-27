@@ -3,7 +3,6 @@ package com.lftechnology.raas.sdk.api;
 import com.lftechnology.raas.sdk.constants.CommonConstant;
 import com.lftechnology.raas.sdk.dto.Token;
 import com.lftechnology.raas.sdk.exception.ApiException;
-import com.lftechnology.raas.sdk.pojo.ListResponse;
 import com.lftechnology.raas.sdk.util.ApiUtil;
 import org.junit.Assert;
 import org.junit.Rule;
@@ -26,7 +25,7 @@ public class TokenApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         TokenApi tokenApi = new TokenApi(this.baseUrl, getInvalidHeader());
 
@@ -36,7 +35,7 @@ public class TokenApiTest {
     }
 
     @Test
-    public void testGetToken() throws IOException{
+    public void testGetToken() {
         //Given
         TokenApi tokenApi = new TokenApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

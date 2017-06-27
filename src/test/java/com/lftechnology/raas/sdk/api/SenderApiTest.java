@@ -28,7 +28,7 @@ public class SenderApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         SenderApi senderApi = new SenderApi(this.baseUrl, getInvalidHeader());
 
@@ -38,7 +38,7 @@ public class SenderApiTest {
     }
 
     @Test
-    public void testGetById() throws IOException{
+    public void testGetById() {
         //Given
         SenderApi senderApi = new SenderApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -50,7 +50,7 @@ public class SenderApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         SenderApi senderApi = new SenderApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -62,7 +62,7 @@ public class SenderApiTest {
     }
 
     @Test
-    public void testCreate() throws IOException{
+    public void testCreate() {
         //Given
         SenderApi senderApi = new SenderApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

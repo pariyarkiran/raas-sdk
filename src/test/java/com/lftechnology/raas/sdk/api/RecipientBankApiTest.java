@@ -26,7 +26,7 @@ public class RecipientBankApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         RecipientBankApi recipientBankApi = new RecipientBankApi(this.baseUrl, getInvalidHeader());
 
@@ -36,7 +36,7 @@ public class RecipientBankApiTest {
     }
 
     @Test
-    public void testGetById() throws IOException{
+    public void testGetById() {
         //Given
         RecipientBankApi recipientBankApi = new RecipientBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -48,7 +48,7 @@ public class RecipientBankApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         RecipientBankApi recipientBankApi = new RecipientBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -60,7 +60,7 @@ public class RecipientBankApiTest {
     }
 
     @Test
-    public void testCreate() throws IOException{
+    public void testCreate() {
         //Given
         RecipientBankApi recipientBankApi = new RecipientBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -72,7 +72,7 @@ public class RecipientBankApiTest {
     }
 
     @Test
-    public void testUpdate() throws IOException{
+    public void testUpdate() {
         //Given
         RecipientBankApi recipientBankApi = new RecipientBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

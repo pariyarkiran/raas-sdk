@@ -26,7 +26,7 @@ public class SenderBankApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         SenderBankApi senderBankApi = new SenderBankApi(this.baseUrl, getInvalidHeader());
 
@@ -36,7 +36,7 @@ public class SenderBankApiTest {
     }
 
     @Test
-    public void testGetById() throws IOException{
+    public void testGetById() {
         //Given
         SenderBankApi senderBankApi = new SenderBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -48,7 +48,7 @@ public class SenderBankApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         SenderBankApi senderBankApi = new SenderBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -60,7 +60,7 @@ public class SenderBankApiTest {
     }
 
     @Test
-    public void testDelete() throws IOException{
+    public void testDelete() {
         //Given
         SenderBankApi senderBankApi = new SenderBankApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

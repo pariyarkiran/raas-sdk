@@ -22,14 +22,14 @@ public class StateApi {
         this.requestApi = new RequestApi(baseUrl,headerMap);
     }
 
-    public State getById(String id) throws IOException{
+    public State getById(String id) {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         StateApiService service = retrofit.create(StateApiService.class);
         Call<State> call = service.get(id);
         return executeApiCall(call);
     }
 
-    public ListResponse<State> list() throws IOException {
+    public ListResponse<State> list() {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         StateApiService service = retrofit.create(StateApiService.class);
         Call<ListResponse<State>> call = service.list();

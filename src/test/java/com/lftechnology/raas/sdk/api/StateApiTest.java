@@ -25,7 +25,7 @@ public class StateApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         StateApi stateApi = new StateApi(this.baseUrl, getInvalidHeader());
 
@@ -35,7 +35,7 @@ public class StateApiTest {
     }
 
     @Test
-    public void testGetById() throws IOException{
+    public void testGetById() {
         //Given
         StateApi stateApi = new StateApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -47,7 +47,7 @@ public class StateApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         StateApi stateApi = new StateApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

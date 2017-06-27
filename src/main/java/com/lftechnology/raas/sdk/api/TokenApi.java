@@ -22,7 +22,7 @@ public class TokenApi {
         this.requestApi = new RequestApi(baseUrl,headerMap);
     }
 
-    public Token getToken(UUID senderId) throws IOException{
+    public Token getToken(UUID senderId) {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         TokenApiService service = retrofit.create(TokenApiService.class);
         Call<Token> call = service.get(senderId);

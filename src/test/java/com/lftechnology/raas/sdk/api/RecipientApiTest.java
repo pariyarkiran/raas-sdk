@@ -26,7 +26,7 @@ public class RecipientApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         RecipientApi recipientApi = new RecipientApi(this.baseUrl, getInvalidHeader());
 
@@ -36,7 +36,7 @@ public class RecipientApiTest {
     }
 
     @Test
-    public void testGetById() throws IOException{
+    public void testGetById() {
         //Given
         RecipientApi recipientApi = new RecipientApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -48,7 +48,7 @@ public class RecipientApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         RecipientApi recipientApi = new RecipientApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -61,7 +61,7 @@ public class RecipientApiTest {
     }
 
     @Test
-    public void testCreate() throws IOException{
+    public void testCreate() {
         //Given
         RecipientApi recipientApi = new RecipientApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -73,7 +73,7 @@ public class RecipientApiTest {
     }
 
     @Test
-    public void testUpdate() throws IOException{
+    public void testUpdate() {
         //Given
         RecipientApi recipientApi = new RecipientApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

@@ -25,7 +25,7 @@ public class CountryApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         CountryApi countryApi = new CountryApi(this.baseUrl, getInvalidHeader());
 
@@ -35,7 +35,7 @@ public class CountryApiTest {
     }
 
     @Test
-    public void testGetById() throws IOException{
+    public void testGetById() {
         //Given
         CountryApi countryApi = new CountryApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -47,7 +47,7 @@ public class CountryApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         CountryApi countryApi = new CountryApi(this.baseUrl, ApiUtil.getDefaultHeader());
 

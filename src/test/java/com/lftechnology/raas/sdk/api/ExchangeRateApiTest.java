@@ -26,7 +26,7 @@ public class ExchangeRateApiTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldThrowApiExceptionWhenForInvalidCredentials() throws IOException{
+    public void shouldThrowApiExceptionWhenForInvalidCredentials() {
         //Given
         ExchangeRateApi exchangeRateApi = new ExchangeRateApi(this.baseUrl, getInvalidHeader());
 
@@ -36,7 +36,7 @@ public class ExchangeRateApiTest {
     }
 
     @Test
-    public void testList() throws IOException{
+    public void testList() {
         //Given
         ExchangeRateApi exchangeRateApi = new ExchangeRateApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
@@ -48,7 +48,7 @@ public class ExchangeRateApiTest {
     }
 
     @Test
-    public void testCreate() throws IOException{
+    public void testCreate() {
         //Given
         ExchangeRateApi exchangeRateApi = new ExchangeRateApi(this.baseUrl, ApiUtil.getDefaultHeader());
 
