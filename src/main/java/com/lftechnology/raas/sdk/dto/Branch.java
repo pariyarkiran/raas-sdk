@@ -12,6 +12,7 @@ public class Branch {
     private String name;
     private String city;
     private String state;
+    private String address;
 
     public String getReferenceId() {
         return referenceId;
@@ -45,8 +46,17 @@ public class Branch {
         this.state = state;
     }
 
-    @Override public String toString() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
         return "Branch{" + "referenceId='" + referenceId + '\'' + ", name='" + name + '\'' + ", city='" + city + '\'' + ", state='" + state
-                + '\'' + '}';
+                + '\'' + ", address='" + address + '\'' + '}';
     }
 }
