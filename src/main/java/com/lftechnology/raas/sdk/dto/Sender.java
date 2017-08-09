@@ -15,6 +15,7 @@ public class Sender {
     private String email;
     private String state;
     private String status;
+    private String currentTier;
 
     public String getReferenceId() {
         return referenceId;
@@ -72,9 +73,18 @@ public class Sender {
         this.status = status;
     }
 
-    @Override public String toString() {
+    public String getCurrentTier() {
+        return currentTier;
+    }
+
+    public void setCurrentTier(String currentTier) {
+        this.currentTier = currentTier;
+    }
+
+    @Override
+    public String toString() {
         return "Sender{" + "referenceId='" + referenceId + '\'' + ", firstName='" + firstName + '\'' + ", middleName='" + middleName + '\''
                 + ", lastName='" + lastName + '\'' + ", email='" + email + '\'' + ", state='" + state + '\'' + ", status='" + status + '\''
-                + '}';
+                + ", currentTier='" + currentTier + '\'' + '}';
     }
 }
