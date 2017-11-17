@@ -54,8 +54,15 @@ public class TransactionApi {
     public void delete(UUID senderId,UUID transactionId) {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         TransactionApiService service = retrofit.create(TransactionApiService.class);
-        Call<Transaction> call = service.delete(senderId,transactionId);
-        executeApiCall(call);
+        Call<Void> call = service.delete(senderId,transactionId);
+        try {
+            Response<Void> response = call.execute();
+            if (!response.isSuccessful()) {
+                throw new ApiException(response.errorBody().string());
+            }
+        } catch (IOException e) {
+            throw new ApiException("Could not delete transaction. Error in Raas SDK.");
+        }
     }
 
     private Transaction executeApiCall(Call<Transaction> call) {

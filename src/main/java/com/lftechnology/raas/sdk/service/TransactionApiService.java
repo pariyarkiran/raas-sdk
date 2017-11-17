@@ -29,6 +29,6 @@ public interface TransactionApiService {
     Call<Transaction> create(@Path("senderId") UUID senderId, @Body Transaction transaction);
 
     @DELETE("senders/{senderId}/transactions/{transactionId}")
-    Call<Transaction> delete(@Path("senderId") UUID senderId, @Path("transactionId") UUID transactionId);
+    Call<Void> delete(@Path("senderId") UUID senderId, @Path("transactionId") UUID transactionId);
 }
 
