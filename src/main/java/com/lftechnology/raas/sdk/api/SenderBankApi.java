@@ -48,8 +48,15 @@ public class SenderBankApi {
     public void delete(UUID senderId,UUID bankId) {
         Retrofit retrofit = this.requestApi.getRetrofitObject();
         SenderBankApiService service = retrofit.create(SenderBankApiService.class);
-        Call<SenderBank> call = service.delete(senderId,bankId);
-        executeApiCall(call);
+        Call<Void> call = service.delete(senderId,bankId);
+        try {
+            Response<Void> response = call.execute();
+            if (!response.isSuccessful()) {
+                throw new ApiException(response.errorBody().string());
+            }
+        } catch (IOException e) {
+            throw new ApiException("Could not delete Sender Bank. Error in Raas SDK.");
+        }
     }
 
     private SenderBank executeApiCall(Call<SenderBank> call) {

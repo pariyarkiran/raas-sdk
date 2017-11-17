@@ -21,6 +21,6 @@ public interface SenderBankApiService {
     Call<ListResponse<SenderBank>> list(@Path("senderId") UUID senderId);
 
     @DELETE("senders/{senderId}/banks/{bankId}")
-    Call<SenderBank> delete(@Path("senderId") UUID senderId, @Path("bankId") UUID bankId);
+    Call<Void> delete(@Path("senderId") UUID senderId, @Path("bankId") UUID bankId);
 }
 
