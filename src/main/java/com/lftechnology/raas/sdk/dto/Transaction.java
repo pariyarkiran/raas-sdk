@@ -23,6 +23,7 @@ public class Transaction {
     private String remittancePurpose;
     private String ipAddress;
     private String status;
+    private String mtoReferenceNumber;
 
     public String getReferenceId() {
         return referenceId;
@@ -128,12 +129,31 @@ public class Transaction {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{" + "referenceId='" + referenceId + '\'' + ", senderAmount=" + senderAmount + ", exchangeRate=" + exchangeRate
-                + ", recipientAmount=" + recipientAmount + ", feeAmount=" + feeAmount + ", senderBankId='" + senderBankId + '\''
-                + ", recipientId='" + recipientId + '\'' + ", recipientBankId='" + recipientBankId + '\'' + ", recipientCurrency='"
-                + recipientCurrency + '\'' + ", note='" + note + '\'' + ", remittancePurpose='" + remittancePurpose + '\'' + ", ipAddress='"
-                + ipAddress + '\'' + ", status='" + status + '\'' + '}';
+    public String getMtoReferenceNumber() {
+        return mtoReferenceNumber;
+    }
+
+    public void setMtoReferenceNumber(String mtoReferenceNumber) {
+        this.mtoReferenceNumber = mtoReferenceNumber;
+    }
+
+    @Override public String toString() {
+        final StringBuffer sb = new StringBuffer("Transaction{");
+        sb.append("referenceId='").append(referenceId).append('\'');
+        sb.append(", senderAmount=").append(senderAmount);
+        sb.append(", exchangeRate=").append(exchangeRate);
+        sb.append(", recipientAmount=").append(recipientAmount);
+        sb.append(", feeAmount=").append(feeAmount);
+        sb.append(", senderBankId='").append(senderBankId).append('\'');
+        sb.append(", recipientId='").append(recipientId).append('\'');
+        sb.append(", recipientBankId='").append(recipientBankId).append('\'');
+        sb.append(", recipientCurrency='").append(recipientCurrency).append('\'');
+        sb.append(", note='").append(note).append('\'');
+        sb.append(", remittancePurpose='").append(remittancePurpose).append('\'');
+        sb.append(", ipAddress='").append(ipAddress).append('\'');
+        sb.append(", status='").append(status).append('\'');
+        sb.append(", mtoReferenceNumber='").append(mtoReferenceNumber).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
