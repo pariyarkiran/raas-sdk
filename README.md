@@ -1,1 +1,1 @@
-# SKD for RAAS-API in JAVA
+# SDK for RAAS-API in JAVA
