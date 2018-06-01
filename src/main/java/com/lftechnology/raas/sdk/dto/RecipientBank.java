@@ -13,7 +13,6 @@ public class RecipientBank {
     private String accountType;
     private Long bankId;
     private String bankName;
-    @SerializedName(value = "bank_branch_id", alternate = "branch_id")
     private Long branchId;
     private String branchName;
     private String address;
