@@ -18,6 +18,7 @@ public class RecipientBank {
     private String address;
     private String city;
     private String state;
+    private String branchLocation;
 
     public String getReferenceId() {
         return referenceId;
@@ -99,10 +100,29 @@ public class RecipientBank {
         this.state = state;
     }
 
+    public String getBranchLocation() {
+        return branchLocation;
+    }
+
+    public void setBranchLocation(String branchLocation) {
+        this.branchLocation = branchLocation;
+    }
+
     @Override
     public String toString() {
-        return "RecipientBank{" + "referenceId='" + referenceId + '\'' + ", accountNumber='" + accountNumber + '\'' + ", accountType='"
-                + accountType + '\'' + ", bankId=" + bankId + ", bankName='" + bankName + '\'' + ", branchId=" + branchId + ", branchName='"
-                + branchName + '\'' + ", address='" + address + '\'' + ", city='" + city + '\'' + ", state='" + state + '\'' + '}';
+        final StringBuffer sb = new StringBuffer("RecipientBank{");
+        sb.append("referenceId='").append(referenceId).append('\'');
+        sb.append(", accountNumber='").append(accountNumber).append('\'');
+        sb.append(", accountType='").append(accountType).append('\'');
+        sb.append(", bankId=").append(bankId);
+        sb.append(", bankName='").append(bankName).append('\'');
+        sb.append(", branchId=").append(branchId);
+        sb.append(", branchName='").append(branchName).append('\'');
+        sb.append(", address='").append(address).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", state='").append(state).append('\'');
+        sb.append(", branchLocation='").append(branchLocation).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
