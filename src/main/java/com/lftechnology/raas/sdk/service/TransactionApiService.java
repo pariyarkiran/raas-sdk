@@ -1,11 +1,13 @@
 package com.lftechnology.raas.sdk.service;
 
 import com.lftechnology.raas.sdk.dto.Transaction;
+import com.lftechnology.raas.sdk.dto.DeliveryRequest;
 import com.lftechnology.raas.sdk.pojo.ListResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -30,5 +32,8 @@ public interface TransactionApiService {
 
     @DELETE("senders/{senderId}/transactions/{transactionId}")
     Call<Void> delete(@Path("senderId") UUID senderId, @Path("transactionId") UUID transactionId);
+
+    @PATCH("senders/{senderId}/transactions/delivery-requests/{transactionId}")
+    Call<Void> requestTransactionDelivery(@Path("senderId") UUID senderId, @Path("transactionId") UUID transactionId, @Body DeliveryRequest deliveryRequest);
 }
 
