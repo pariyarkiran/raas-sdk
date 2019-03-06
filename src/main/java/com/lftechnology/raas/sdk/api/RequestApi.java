@@ -9,6 +9,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -21,7 +22,7 @@ import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.util.Map;
-
+import java.util.concurrent.TimeUnit;
 /**
  * @author Kiran Pariyar <kiranpariyar@lftechnology.com>
  */
@@ -42,7 +43,11 @@ public class RequestApi {
 
     public Retrofit getRetrofitObject(){
 
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient.Builder httpClient = getUnsafeOkHttpClient();
+        httpClient.connectTimeout(5, TimeUnit.MINUTES).readTimeout(5, TimeUnit.MINUTES).writeTimeout(5, TimeUnit.MINUTES);
         httpClient.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Interceptor.Chain chain) throws IOException {
@@ -53,6 +58,8 @@ public class RequestApi {
                 return chain.proceed(request);
             }
         });
+
+        httpClient.addInterceptor(interceptor);
 
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
