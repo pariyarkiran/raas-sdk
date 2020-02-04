@@ -73,6 +73,37 @@ public class RequestApi {
                 .build();
     }
 
+    public Retrofit getRetrofitObjectCIP(){
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder httpClient = getUnsafeOkHttpClient();
+        httpClient.connectTimeout(5, TimeUnit.MINUTES).readTimeout(5, TimeUnit.MINUTES).writeTimeout(5, TimeUnit.MINUTES);
+        httpClient.addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Interceptor.Chain chain) throws IOException {
+                Request original = chain.request();
+                Request.Builder requestBuilder = original.newBuilder()
+                        .headers(headers);
+                Request request = requestBuilder.build();
+                return chain.proceed(request);
+            }
+        });
+
+        httpClient.addInterceptor(interceptor);
+
+        Gson gson = new GsonBuilder()
+                .create();
+
+        return new Retrofit
+                .Builder()
+                .baseUrl(this.baseUrl)
+                .client(httpClient.build())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+    }
+
 
     // TODO Need to refactor code : remove deprecated method and handle exception properly
     // Method for requesting server without ssl

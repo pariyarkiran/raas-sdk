@@ -35,5 +35,8 @@ public interface TransactionApiService {
 
     @PATCH("senders/{senderId}/transactions/delivery-requests/{transactionId}")
     Call<Void> requestTransactionDelivery(@Path("senderId") UUID senderId, @Path("transactionId") UUID transactionId, @Body DeliveryRequest deliveryRequest);
+
+    @PATCH("senders/{senderId}/transactions/delivery-requests/{transactionId}")
+    Call<Void> deliver(@Path("senderId") UUID senderId, @Path("transactionId") UUID transactionId, @Body DeliveryRequest deliveryRequest);
 }
 

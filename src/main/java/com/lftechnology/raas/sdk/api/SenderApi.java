@@ -1,6 +1,8 @@
 package com.lftechnology.raas.sdk.api;
 
 import com.lftechnology.raas.sdk.dto.Sender;
+import com.lftechnology.raas.sdk.dto.SenderWidget;
+import com.lftechnology.raas.sdk.dto.SenderWidgetResponse;
 import com.lftechnology.raas.sdk.exception.ApiException;
 import com.lftechnology.raas.sdk.pojo.ListResponse;
 import com.lftechnology.raas.sdk.service.SenderApiService;
@@ -55,6 +57,25 @@ public class SenderApi {
     private Sender executeApiCall(Call<Sender> call) {
         try {
             Response<Sender> response = call.execute();
+            if (!response.isSuccessful()) {
+                throw new ApiException(response.errorBody().string());
+            }
+            return response.body();
+        } catch (IOException e) {
+            throw new ApiException();
+        }
+    }
+
+    public SenderWidgetResponse cip(UUID id, SenderWidget senderWidget){
+        Retrofit retrofit = this.requestApi.getRetrofitObjectCIP();
+        SenderApiService service = retrofit.create(SenderApiService.class);
+        Call<SenderWidgetResponse> call = service.cip(id, senderWidget);
+        return executeCIPApiCall(call);
+    }
+
+    private SenderWidgetResponse executeCIPApiCall(Call<SenderWidgetResponse> call) {
+        try {
+            Response<SenderWidgetResponse> response = call.execute();
             if (!response.isSuccessful()) {
                 throw new ApiException(response.errorBody().string());
             }
